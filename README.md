@@ -6,7 +6,7 @@ portable C and adapted for environments outside the CS50 IDE.
 testing, all while avoiding changes in the code style i had at the time so some evolution can be 
 percieved when browsing other code in my Reporitory.
 
-📂 What’s inside
+What’s inside
 - Credit Card Validator — Luhn’s algorithm + network detection
 - Mario Pyramids — Loop logic and formatted output
 - Substitution Cipher — Command‑line key validation and text encryption
