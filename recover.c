@@ -1,3 +1,22 @@
+/**
+ * FILE: recover.c
+ * DESCRIPTION:
+ * A forensic utility that recovers JPEGs from a forensic image (raw data).
+ * It scans 512-byte blocks looking for the distinct "magic bytes" that 
+ * signal the start of a JPEG file.
+ *
+ * USAGE:
+ * ./recover card.raw
+ *
+ * TECHNICAL CONCEPTS:
+ * 1. File I/O: Uses fopen, fread, and fwrite to handle binary data streams.
+ * 2. Bitwise Operations: Uses (file[3] & 0xf0) == 0xe0 to identify the 
+ * fourth byte of a JPEG header (which can range from 0xe0 to 0xef).
+ * 3. File Buffering: Processes data in 512-byte blocks, matching the
+ * standard block size of FAT file systems.
+ * 4. Dynamic Naming: Uses sprintf to generate incrementing filenames (000.jpg, 001.jpg).
+ */
+
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,7 +28,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        printf("Usage: ./recover filename");
+        printf("Usage: ./recover filename\n");
         return 1;
     }
 
@@ -48,7 +67,7 @@ int main(int argc, char *argv[])
 
             if (outfile == NULL)
             {
-                printf("Couldn't create file %s", filename);
+                printf("Couldn't create file %s\n", filename);
                 return 2;
             }
 
@@ -75,6 +94,7 @@ int main(int argc, char *argv[])
 
 int isJpeg(uint8_t *file)
 {
+    // Scans the first 4 bytes for JPEG signatures: ff d8 ff e[0-f]
     if (file[0] == 0xff)
     {
         if (file[1] == 0xd8)
