@@ -4,7 +4,7 @@ This repository contains a collection of systems-level and algorithmic projects 
 
 ---
 
-## 🚀 Market-Valued Technical Highlights
+## Technical Highlights
 
 In today's competitive landscape, this codebase demonstrates specific high-demand competencies:
 
