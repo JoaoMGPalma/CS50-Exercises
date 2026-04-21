@@ -1,46 +1,48 @@
-# CS50 Implementation Showcase: C & Python
+# CS50 Projects: C & Python Implementation (Lectures 1 - 6)
 
-This repository contains a collection of systems-level and algorithmic projects originally developed during Harvard’s CS50, now refactored for **maximum portability and independence**. By stripping away pedagogical libraries (like `cs50.h`), these implementations demonstrate a professional-grade grasp of the standard C library and Python's native capabilities.
+This is a collection of the low-level systems and algorithmic work I did during Harvard’s CS50. I’ve refactored these to be **completely independent**—I stripped out the `cs50.h` library and replaced it with standard C and Python built-ins. 
+
+It was a great exercise in moving from "classroom code" to "real-world code" where you can't rely on helper libraries to handle things like input or string management for you.
 
 ---
 
-## Technical Highlights
+## 🚀 Technical Highlights
 
-In today's competitive landscape, this codebase demonstrates specific high-demand competencies:
+If you're looking through this for a role, here is the stuff that actually matters:
 
-* **Manual Memory Management (C):** Proficiency in the "Forensics" (`recover.c`) and "Data Structures" (`dictionary.c`) modules demonstrates a deep understanding of the heap and stack, pointer arithmetic, and the prevention of memory leaks—essential for high-performance systems engineering.
-* **Algorithmic Efficiency:** The `speller` implementation utilizes a custom **Hash Table** with a $O(1)$ average lookup time, showcasing an ability to optimize for big-data scenarios where search speed is critical.
-* **Bit-Level Forensics:** The `recover` utility demonstrates the ability to parse raw binary data and manipulate file headers, skills directly applicable to cybersecurity and data recovery roles.
-* **Polyglot Logic:** By implementing the `readability` and `credit` logic in both C and Python, this repository showcases "logic-first" thinking—the ability to solve a problem regardless of the syntax.
+* **Manual Memory Management (C):** Projects like `recover.c` and `dictionary.c` are where I really got comfortable with the heap and stack. I’m handling pointers, malloc, and freeing memory manually to ensure zero leaks.
+* **Algorithmic Efficiency:** My `speller` implementation uses a custom **Hash Table**. I went with a $O(1)$ average lookup time, which is exactly what you need when you're checking 140,000+ words in a fraction of a second.
+* **Forensics & Bit-Level Logic:** In `recover.c`, I’m parsing raw binary data and using bitwise masks (`&`) to find JPEG headers. It’s a deep dive into how data is actually stored on a disk.
+* **Polyglot Logic:** I implemented the `readability` and `credit` logic in both C and Python. It shows I can solve the problem regardless of which language I'm using.
 
 ---
 
 ## 📂 Project Directory
 
 ### 💳 [credit.py](credit.py)
-* **Algorithm Mastery:** Implements **Luhn’s Algorithm** to validate credit card numbers.
-* **Key Skill:** Uses mathematical logic rather than string manipulation to parse digits, demonstrating a focus on computational efficiency.
+* **What it does:** Validates credit card numbers using **Luhn’s Algorithm**.
+* **The "Win":** I used purely mathematical logic to peel off digits rather than converting everything to strings. It’s much faster and cleaner.
 
 ### 🌳 [inheritance.c](inheritance.c)
-* **Recursive Logic:** Simulates genetic inheritance across multiple generations.
-* **Key Skill:** Mastery of **recursive data structures** and dynamic memory allocation for nested "ancestor" nodes.
+* **What it does:** Simulates blood type inheritance across generations.
+* **The "Win":** This was my deep dive into **recursion** and nested data structures.
 
 ### 📚 [readability.c](readability.c) & [readability.py](readability.py)
-* **Text Analysis:** Computes the **Coleman-Liau index** to determine the reading grade level of a text.
-* **Key Skill:** Multi-language implementation and character-stream parsing.
+* **What it does:** Calculates the Coleman-Liau index to grade the difficulty of a text.
+* **The "Win":** A straightforward example of parsing character streams and handling multi-language logic.
 
 ### 📷 [recover.c](recover.c)
-* **Digital Forensics:** Recovers deleted JPEGs from a raw memory card image by identifying **hexadecimal magic bytes**.
-* **Key Skill:** Low-level File I/O and bitwise operations (`&` mask) to identify file signatures.
+* **What it does:** Recovers "deleted" JPEGs from a raw forensic image.
+* **The "Win":** No libraries used—just raw C, `fread`, and hexadecimal signature matching.
 
 ### 📖 [speller-dictionary.c](speller-dictionary.c)
-* **High-Performance Data Structures:** A spell-checker that loads 140,000+ words into a **Hash Table** with linked-list collision handling.
-* **Key Skill:** Designing custom data structures to minimize "Big O" time complexity.
+* **What it does:** A lightning-fast spell checker.
+* **The "Win":** Implemented a Hash Table with linked-list collision handling from scratch.
 
 ### 🔊 [volume.c](volume.c)
-* **Digital Signal Processing (DSP):** A utility that adjusts the volume of WAV files by scaling 16-bit audio samples.
-* **Key Skill:** Binary file header preservation and handling of `int16_t` signed integers for raw audio processing.
+* **What it does:** Adjusts the volume of WAV files by scaling raw audio samples.
+* **The "Win):** Demonstrates how to preserve a 44-byte binary header while manipulating the 16-bit audio data that follows.
 
 ---
 
-> **Note on Portability:** All C files are compiled using standard `gcc` and do not require external dependencies. All Python files are compatible with Python 3.10+.
+> **Note:** The C files here are standard `gcc` compatible and have zero external dependencies. The Python files are built for Python 3.10+.
