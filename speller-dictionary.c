@@ -1,4 +1,20 @@
-// Implements a dictionary's functionality
+/**
+ * FILE: dictionary.c
+ * DESCRIPTION:
+ * A high-performance spell-checking engine that loads a dictionary file 
+ * into memory and performs case-insensitive word lookups.
+ *
+ * USAGE:
+ * Linked with a runner file to spell-check large text documents.
+ *
+ * DATA STRUCTURES & LEARNING:
+ * 1. Hash Table: Implements an array of N buckets (676) to allow for 
+ * near-constant time (O(1)) lookups.
+ * 2. Singly Linked Lists: Each bucket in the hash table points to a 
+ * linked list to handle "collisions".
+ * 3. Dynamic Memory: Demonstrates advanced heap management, including 
+ * iterative clearing of memory to prevent leaks.
+ */
 
 #include <ctype.h>
 #include <stdbool.h>
@@ -7,7 +23,10 @@
 #include <string.h>
 #include <strings.h>
 
-#include "dictionary.h"
+// Max length for a word
+#ifndef LENGTH
+#define LENGTH 45
+#endif
 
 // Represents a node in a hash table
 typedef struct node
