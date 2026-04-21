@@ -1,5 +1,4 @@
 import re
-from cs50 import get_string
 
 # Array of dictionaries -
 # holds the identifier data (number of digits, starting digits)
@@ -21,7 +20,7 @@ def calc_luhn(card_number):
 
     for i, digit in enumerate(reversed(card_digits)):
         if i % 2 != 0:
-            doubled = int(digit*2)
+            doubled = int(digit * 2)
             if doubled > 9:
                 doubled -= 9
             doubled_digits.append(doubled)
@@ -33,19 +32,20 @@ def calc_luhn(card_number):
 
 
 def main():
-    # We ask the user to input the card number and use .strip() to clear any whitespace included by mistake
-    card_number = get_string("Number: ").strip()
+    # Standard Python input() replaces get_string()
+    # We use .strip() to clear any whitespace included by mistake
+    card_number = input("Number: ").strip()
 
     found_match = False
 
-    # If the calc_luhn funtion returns False we immediately return INVALID
+    # If the calc_luhn function returns False we immediately return INVALID
     if calc_luhn(card_number):
 
         # Here we iterate the patterns for each card issuer and check if there's a match
         for i in issuers:
             if re.match(i["len"], card_number) and re.match(i["chk_digits"], card_number):
-               print(f"{i["name"]}")
-               found_match = True
+                print(f"{i['name']}")
+                found_match = True
 
         if not found_match:
             print("INVALID")
